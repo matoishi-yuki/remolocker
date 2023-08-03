@@ -1,0 +1,31 @@
+{
+  "statusCode": 100,
+  "body": {
+    "deviceList": [
+      {
+        "deviceId": "C7C39A5652B8",
+        "deviceName": "ハブミニ B8",
+        "deviceType": "Hub Mini",
+        "enableCloudService": false,
+        "hubDeviceId": ""
+      },
+      {
+        "deviceId": "CB6EFE376844",
+        "deviceName": "ロック 44",
+        "deviceType": "Smart Lock",
+        "enableCloudService": true,
+        "hubDeviceId": "C7C39A5652B8",
+        "master": true
+      }
+    ],
+    "infraredRemoteList": [
+      {
+        "deviceId": "01-202304151450-17961116",
+        "deviceName": "その他",
+        "remoteType": "Others",
+        "hubDeviceId": "C7C39A5652B8"
+      }
+    ]
+  },
+  "message": "success"
+}
