@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Float
 from ..database.db import Base
 
 class Place(Base):
@@ -8,3 +8,5 @@ class Place(Base):
     name = Column(String, index=True)
     address = Column(String)
     photo = Column(String)
+    latitude = Column(Float)
+    longitude = Column(Float)
