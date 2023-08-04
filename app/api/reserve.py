@@ -159,12 +159,7 @@ def get_reserves(current_user: UserModel = Depends(get_current_user), response_m
     for r in reserves:
         place = db.query(PlaceModel).filter(PlaceModel.id == r.place_id).first()
         room = db.query(RoomModel).filter(RoomModel.id == r.room_id).first()
-        print("--------------------------------------------------------")
-        print(r.id)
-        print(r.place_id)
-        print(place.name)
-        print(r.room_id)
-        print(room.name)
+
         strJson += "{"
         strJson += ("\"id\": " + str(r.id) + ",")
         strJson += ("\"place_id\": " + str(r.place_id) + ",")
@@ -182,7 +177,9 @@ def get_reserves(current_user: UserModel = Depends(get_current_user), response_m
         strJson += "},"
     strJson = strJson[:-1]
     strJson += "]"
-
+    print("--------------------------------------------------------")
+    print(strJson)
+    
     student_json = json.loads(strJson)
 
     return student_json
