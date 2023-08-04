@@ -177,8 +177,6 @@ def get_reserves(current_user: UserModel = Depends(get_current_user), response_m
         strJson += "},"
     strJson = strJson[:-1]
     strJson += "]"
-    print("--------------------------------------------------------")
-    print(strJson)
 
     student_json = json.loads(strJson)
 
