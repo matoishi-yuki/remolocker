@@ -163,9 +163,9 @@ def get_reserves(current_user: UserModel = Depends(get_current_user), response_m
         strJson += "{"
         strJson += ("\"id\": " + str(r.id) + ",")
         strJson += ("\"place_id\": " + str(r.place_id) + ",")
-        strJson += ("\"place_name\": " + str(place.name) + ",")
+        strJson += ("\"place_name\": \"" + str(place.name) + "\",")
         strJson += ("\"room_id\": " + str(r.room_id) + ",")
-        strJson += ("\"room_name\": " + str(room.name) + ",")
+        strJson += ("\"room_name\": \"" + str(room.name) + "\",")
         strJson += ("\"user_id\": " + str(r.user_id) + ",")
         stime = r.start_time.strftime('%Y-%m-%d %H:%M')
         etime = r.end_time.strftime('%Y-%m-%d %H:%M')
@@ -179,7 +179,7 @@ def get_reserves(current_user: UserModel = Depends(get_current_user), response_m
     strJson += "]"
     print("--------------------------------------------------------")
     print(strJson)
-    
+
     student_json = json.loads(strJson)
 
     return student_json
