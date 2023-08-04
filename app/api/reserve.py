@@ -139,8 +139,8 @@ def get_user_ifno(current_user: UserModel = Depends(get_current_user),
             "reserve": {"id": reserve.id, "start_time": reserve.start_time.strftime('%Y-%m-%d %H:%M'),
                         "end_time": reserve.end_time.strftime('%Y-%m-%d %H:%M'),
                         "price": reserve.price,
-                        "room": {"id": room.id, "room_name": room.name, "device_status": room.device_status},
-                        "place": {"id": place.id, "place_name": place.name}
+                        "room": {"id": room.id, "name": room.name, "device_status": room.device_status},
+                        "place": {"id": place.id, "name": place.name}
                         }
 
         }
