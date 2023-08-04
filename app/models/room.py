@@ -6,7 +6,7 @@ class Room(Base):
     __tablename__ = "rooms"
 
     id = Column(Integer, primary_key=True, index=True)
-    place_id = Column(Integer, ForeignKey("place_id.id"), index=True)
+    place_id = Column(Integer, index=True)
     device_id = Column(String, index=True)
     gender = Column(String, index=True)
     name = Column(String, index=True)  # 名前を変更

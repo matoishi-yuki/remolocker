@@ -29,6 +29,8 @@ def get_places(current_user: UserModel = Depends(get_current_user), db: Session 
 def create_places(
         name: str = Form(...),
         address: str = Form(...),
+        latitude: float = Form(...),
+        longitude: float = Form(...),
         photo: Optional[UploadFile] = File(None),
         db: Session = Depends(get_db),
 ):
@@ -48,7 +50,9 @@ def create_places(
     new_places = Place(
         name=name,
         address=address,
-        photo=photo_path
+        photo=photo_path,
+        latitude=latitude,
+        longitude=longitude
     )
     db.add(new_places)
     db.commit()
