@@ -157,10 +157,15 @@ def get_reserves(current_user: UserModel = Depends(get_current_user), response_m
 
     strJson = "["
     for r in reserves:
+        place = db.query(PlaceModel).filter(PlaceModel.id == r.place_id).first()
+        room = db.query(RoomModel).filter(RoomModel.id == r.room_id).first()
+
         strJson += "{"
         strJson += ("\"id\": " + str(r.id) + ",")
         strJson += ("\"place_id\": " + str(r.place_id) + ",")
+        strJson += ("\"place_name\": " + place.name + ",")
         strJson += ("\"room_id\": " + str(r.room_id) + ",")
+        strJson += ("\"room_name\": " + room.name + ",")
         strJson += ("\"user_id\": " + str(r.user_id) + ",")
         stime = r.start_time.strftime('%Y-%m-%d %H:%M')
         etime = r.end_time.strftime('%Y-%m-%d %H:%M')
