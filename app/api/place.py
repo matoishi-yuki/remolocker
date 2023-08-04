@@ -14,19 +14,14 @@ MEDIA_PATH = os.environ.get("MEDIA_PATH", "media/building_photos")
 
 
 @router.get("/admin/places")
-def get_places(
-        skip: int = 0, limit: int = 10, db: Session = Depends(get_db)
-) -> List[Place]:
-    places = db.query(Place).offset(skip).limit(limit).all()
+def get_places(db: Session = Depends(get_db)):
+    places = db.query(Place).all()
     return places
 
 
 @router.get("/places")
-def get_places(
-        current_user: UserModel = Depends(get_current_user),
-        skip: int = 0, limit: int = 10, db: Session = Depends(get_db)
-) -> List[Place]:
-    places = db.query(Place).offset(skip).limit(limit).all()
+def get_places(current_user: UserModel = Depends(get_current_user), db: Session = Depends(get_db)):
+    places = db.query(Place).all()
     return places
 
 
