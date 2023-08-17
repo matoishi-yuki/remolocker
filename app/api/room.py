@@ -8,7 +8,10 @@ from ..models.room import Room as RoomModel
 
 from ..models.reserve import Reserve as ReserveModel
 from ..models.user import User as UserModel
-from .switchbot import lock,unlock
+from .switchbot import lock as switchbot_lock
+from .switchbot import unlock as switchbot_unlock
+from .sesame import lock as sesame_lock
+from .sesame import unlock as sesame_unlock
 from .authentication import *
 router = APIRouter()
 
@@ -40,6 +43,7 @@ def create_rooms(
     end_time: Optional[time] = Form(None),
     photo: Optional[UploadFile] = File(None),
     price: int = Form(...),
+    device_type: int = Form(...),
     db: Session = Depends(get_db),
 ):
 
@@ -70,7 +74,8 @@ def create_rooms(
         end_time=end_time,
         photo=photo_path,
         price=price,
-        device_status="lock"
+        device_status="lock",
+        device_type=device_type
     )
     db.add(new_room)
     db.commit()
@@ -101,7 +106,10 @@ def lock_key(room_id: int, reserve_id: KeyStatus, current_user: UserModel = Depe
     if room is None:
         return None
 
-    lock(room.device_id)
+    if room.device_type == "sesame":
+        sesame_lock(room.device_id)
+    else:
+        switchbot_lock(room.device_id)
 
     room.device_status = "lock"
     db.commit()
@@ -132,7 +140,10 @@ def unlock_key(room_id: int, reserve_id: KeyStatus, current_user: UserModel = De
     if room is None:
         return None
 
-    unlock(room.device_id)
+    if room.device_type == "sesame":
+        sesame_unlock(room.device_id)
+    else:
+        switchbot_unlock(room.device_id)
 
     room.device_status = "unlock"
     db.commit()

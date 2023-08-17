@@ -16,3 +16,4 @@ class Room(Base):
     photo = Column(String)
     price = Column(Integer)
     device_status = Column(String)
+    device_type = Column(String)
