@@ -50,9 +50,10 @@ def create_rooms(
         # Check if the directory exists, and create it if not
         if not os.path.exists(MEDIA_PATH):
             os.makedirs(MEDIA_PATH)
-
-        photo_path = os.path.join(MEDIA_PATH, photo.filename)
-        with open(photo_path, "wb") as f:
+        file_name = photo.filename + (datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f'))
+        save_path = "./app/" + MEDIA_PATH + "/" + file_name
+        photo_path = os.path.join(MEDIA_PATH, file_name)
+        with open(save_path, "wb") as f:
             f.write(photo.file.read())
     else:
         photo_path = None
