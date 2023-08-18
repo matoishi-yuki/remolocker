@@ -42,7 +42,7 @@ def create_rooms(
     end_time: Optional[time] = Form(None),
     photo: Optional[UploadFile] = File(None),
     price: int = Form(...),
-    device_type: int = Form(...),
+    device_type: str = Form(...),
     db: Session = Depends(get_db),
 ):
 
