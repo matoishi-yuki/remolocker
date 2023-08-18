@@ -6,7 +6,6 @@ from pydantic import BaseModel
 class RoomBase(BaseModel):
     place_id: int
     device_id: str
-    gender: str
     name: str
     type: str
     start_time: Optional[time] = None
