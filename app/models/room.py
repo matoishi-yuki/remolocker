@@ -8,7 +8,6 @@ class Room(Base):
     id = Column(Integer, primary_key=True, index=True)
     place_id = Column(Integer, index=True)
     device_id = Column(String, index=True)
-    gender = Column(String, index=True)
     name = Column(String, index=True)  # 名前を変更
     type = Column(String)
     start_time = Column(Time)

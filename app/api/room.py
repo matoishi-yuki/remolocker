@@ -36,7 +36,6 @@ def get_rooms(current_user: UserModel = Depends(get_current_user), db: Session =
 def create_rooms(
     place_id: int = Form(...),
     device_id: str = Form(...),
-    gender: str = Form(...),
     name: str = Form(...),
     type: str = Form(...),
     start_time: Optional[time] = Form(None),
@@ -67,7 +66,6 @@ def create_rooms(
     new_room = RoomModel(
         place_id=place_id,
         device_id=device_id,
-        gender=gender,
         name=name,
         type=type,
         start_time=start_time,
