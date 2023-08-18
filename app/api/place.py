@@ -10,7 +10,7 @@ from ..models.user import User as UserModel
 router = APIRouter()
 
 # Use environment variable if it exists, otherwise use the default path
-MEDIA_PATH = os.environ.get("MEDIA_PATH", "media/building_photos")
+MEDIA_PATH = os.environ.get("MEDIA_PATH", "media/place_photos")
 
 
 @router.get("/admin/places")

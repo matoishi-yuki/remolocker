@@ -16,7 +16,7 @@ from .authentication import *
 router = APIRouter()
 
 # Use environment variable if it exists, otherwise use the default path
-MEDIA_PATH = os.environ.get("MEDIA_PATH", "media/toilet_photos")
+MEDIA_PATH = os.environ.get("MEDIA_PATH", "media/room_photos")
 
 
 @router.get("/admin/rooms", response_model=List[Room])
